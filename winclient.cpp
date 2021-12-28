@@ -2,7 +2,7 @@
 // Created by derrf on 2021/12/27.
 //
 
-#undef UNICODE
+//#undef UNICODE
 
 #define WIN32_LEAN_AND_MEAN
 
