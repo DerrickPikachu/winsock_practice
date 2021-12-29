@@ -25,8 +25,20 @@ class Server:
 
     def waitClient(self):
         self.clientSocket, address = self.listenSocket.accept()
+        self.listenSocket.close()
+
+    def recvClient(self):
+        return str(self.clientSocket.recv(512), encoding='utf-8')
+
+    def sendNormalMap(self, filePath):
+        message = "NORMAL_MAP:" + filePath
+        self.clientSocket.sendall(message.encode())
 
 
 if __name__ == "__main__":
     server = Server()
     server.waitClient()
+    clientMessage = server.recvClient()
+    print(clientMessage)
+    server.sendNormalMap("test")
+    server.clientSocket.close()
