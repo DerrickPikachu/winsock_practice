@@ -28,6 +28,10 @@ private:
     void loadConfig();
     void connectToServer();
 
+public:
+    void sendSketch(std::string filePath);
+    std::string recvNormalMap();
+
 private:
     WSADATA wsadata;
     SOCKET serverSocket;

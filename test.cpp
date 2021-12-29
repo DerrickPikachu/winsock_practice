@@ -5,5 +5,8 @@
 
 int main() {
     Client cli;
+    std::string temp;
+    std::getline(std::cin, temp);
+    cli.sendSketch(temp);
     return 0;
 }

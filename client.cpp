@@ -14,8 +14,6 @@ Client::Client() {
     buildServerAddress();
     serverSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     connectToServer();
-    std::cout << "connection successful" << std::endl;
-    send(serverSocket, "test", 4, 0);
 }
 
 void Client::loadConfig() {
@@ -61,3 +59,10 @@ void Client::connectToServer() {
 /*
  * Communication section
  */
+void Client::sendSketch(std::string filePath) {
+    std::string fullMessage = "CAL_NORMAL:" + filePath;
+    if (send(serverSocket, fullMessage.c_str(), fullMessage.size(), 0) == SOCKET_ERROR) {
+        std::cerr << "send error" << std::endl;
+        exit(1);
+    }
+}
