@@ -1,5 +1,4 @@
 all:
-	g++ winclient.cpp -o winclient -lws2_32
-	g++ client.cpp -o client -lws2_32
+	g++ test.cpp client.cpp -o test -lws2_32
 clean:
 	all

@@ -14,14 +14,20 @@ Client::Client() {
     buildServerAddress();
     serverSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
     connectToServer();
+    std::cout << "connection successful" << std::endl;
+    send(serverSocket, "test", 4, 0);
 }
 
 void Client::loadConfig() {
     std::ifstream config;
     config.open(configFile);
+    if (!config.is_open()) {
+        std::cerr << "file not found" << std::endl;
+        exit(1);
+    }
     std::string line;
     while (std::getline(config, line)) {
-        std::string term = line.substr(0, line.find(":") + 1);
+        std::string term = line.substr(0, line.find(":"));
         std::string value = line.substr(line.find(":") + 1);
         if (term == "ip") {
             ip = value;
