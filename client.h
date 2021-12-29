@@ -30,12 +30,14 @@ private:
 
 public:
     void sendSketch(std::string filePath);
+    bool isNormalMapReady();
     std::string recvNormalMap();
 
 private:
     WSADATA wsadata;
     SOCKET serverSocket;
     SOCKADDR_IN serverAddress;
+    FD_SET readSet;
     int port;
     std::string ip;
     const int MAX_BUFFER = 512;

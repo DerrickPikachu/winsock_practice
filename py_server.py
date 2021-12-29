@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import socket
+import time
 HOST = '127.0.0.1'
 PORT = 27015
 
@@ -11,6 +12,7 @@ while True:
     conn, addr = server.accept()
     clientMessage = str(conn.recv(1024), encoding='utf-8')
 
+    time.sleep(1);
     print('Client message is:', clientMessage)
 
     serverMessage = 'I\'m here!'

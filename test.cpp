@@ -8,5 +8,9 @@ int main() {
     std::string temp;
     std::getline(std::cin, temp);
     cli.sendSketch(temp);
+    while (!cli.isNormalMapReady()) {
+        std::cout << "hehehe" << std::endl;
+    }
+    std::cout << cli.recvNormalMap() << std::endl;
     return 0;
 }
