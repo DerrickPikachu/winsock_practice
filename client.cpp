@@ -82,7 +82,7 @@ bool Client::isNormalMapReady() {
 }
 
 std::string Client::recvNormalMap() {
-    char buffer[MAX_BUFFER];
+    char* buffer = new char[MAX_BUFFER];
     memset(buffer, 0, MAX_BUFFER);
     int len = recv(serverSocket, buffer, MAX_BUFFER, 0);
     if (len == SOCKET_ERROR) {
